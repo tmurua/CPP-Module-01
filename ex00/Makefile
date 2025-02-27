@@ -1,7 +1,7 @@
 NAME    = BraiiiiiiinnnzzzZ
 CXX     = c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98
-SRC     = main.cpp #Zombie.cpp newZombie.cpp randomChump.cpp
+SRC     = main.cpp newZombie.cpp #Zombie.cpp randomChump.cpp
 OBJ     = $(SRC:.cpp=.o)
 
 all: $(NAME)
