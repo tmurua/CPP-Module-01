@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 22:18:59 by tmurua            #+#    #+#             */
-/*   Updated: 2025/02/27 14:09:00 by tmurua           ###   ########.fr       */
+/*   Updated: 2025/02/27 17:36:07 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ private:
 	std::string name;
 
 public:
-	Zombie(std::string name)
+	Zombie(std::string name) // constructor initializes Zombie with a name
 	{
 		this->name = name;
 	}
@@ -29,8 +29,10 @@ public:
 	{
 		std::cout << name << ": BraiiiiiiinnnzzzZ...\n";
 	}
+	~Zombie();
 };
 
-Zombie* newZombie(std::string name);
+Zombie*	newZombie(std::string name);
+void	randomChump(std::string name);
 
 #endif

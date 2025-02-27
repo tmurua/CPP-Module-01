@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 22:31:55 by tmurua            #+#    #+#             */
-/*   Updated: 2025/02/27 17:12:45 by tmurua           ###   ########.fr       */
+/*   Created: 2025/02/27 16:24:38 by tmurua            #+#    #+#             */
+/*   Updated: 2025/02/27 17:16:32 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int	main()
+// define destructor to simply log object destruction
+Zombie::~Zombie()
 {
-	randomChump("Mr. Stack");
-	Zombie* heapZ = newZombie("Mr. Heap");
-	heapZ->announce();
-	delete heapZ;
+	std::cout << name << " was destroyed.\n";
 }
