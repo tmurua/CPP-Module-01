@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 22:18:59 by tmurua            #+#    #+#             */
-/*   Updated: 2025/02/27 14:09:00 by tmurua           ###   ########.fr       */
+/*   Created: 2025/02/26 22:31:55 by tmurua            #+#    #+#             */
+/*   Updated: 2025/02/27 14:09:43 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#include "Zombie.hpp"
 
-#include <iostream>
-
-class Zombie
+int	main()
 {
-private:
-	std::string name;
-
-public:
-	Zombie(std::string name)
-	{
-		this->name = name;
-	}
-	void	announce()
-	{
-		std::cout << name << ": BraiiiiiiinnnzzzZ...\n";
-	}
-};
-
-Zombie* newZombie(std::string name);
-
-#endif
+	Zombie newZombie("Foo");
+	newZombie.announce();
+}
