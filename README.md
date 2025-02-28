@@ -70,6 +70,10 @@ This exercise adds **arrays allocation** to the last one. Taking ex00 as a basis
     Call `zombieHorde()` to create a horde.
     Use delete[] to free the allocated Zombies.
 
+### Lessons Learned
+- **array allocation using new and delete operators:**
+  Using `new Zombie[N]` allocates multiple objects on the `heap`. These objects persist until explicitly freed with `delete[]`
+
 ---
 
 ## ex:02 -  HI THIS IS BRAIN
