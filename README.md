@@ -54,7 +54,21 @@ This repository contains my solutions for Module 01. Below is an overview of my 
 ## ex:01 - Moar brainz!
 
 ### Plan
-1.
+This exercise adds **arrays allocation** to the last one. Taking ex00 as a basis:
+1. **Change the constructor** to take no parameters (default constructor) and create a set member function to give the object `Zombie` a `std::string name`.
+
+2. **Implement `Zombie* zombieHorde(int N, std::string name);`** in `zombieHorde.cpp`:
+
+   - Allocate an array of `N Zombies` using `new Zombie[N]`:
+  ```
+  Zombie*	horde = new Zombie[N];
+  ```
+   - Loop through the array to initialize each `Zombie`’s `name`
+   - Return a pointer to the first `Zombie`
+
+3. **In main.cpp**:
+    Call `zombieHorde()` to create a horde.
+    Use delete[] to free the allocated Zombies.
 
 ---
 
