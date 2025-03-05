@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:50:48 by tmurua            #+#    #+#             */
-/*   Updated: 2025/03/04 17:13:15 by tmurua           ###   ########.fr       */
+/*   Updated: 2025/03/05 13:15:04 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,13 @@
 
 class HumanB
 {
-	public:
+public:
 	std::string	nameB;
-	Weapon	*weaponB; // pointer to Weapon object weaponB
+	Weapon	*weaponB; // pointer to Weapon object weaponB (may be NULL)
 
-	HumanB(std::string nameB)
-	{
-		this->nameB = nameB;
-	}
-	void setWeapon(Weapon &weaponB) // object passed as reference!
-	{
-		this->weaponB = &weaponB; // store weapon reference as a pointer
-	}
-	void attack()
-	{
-		std::cout << nameB << " attacks with their " << weaponB->getType() << "\n";
-	}
+	HumanB(std::string nameB);
+	void setWeapon(Weapon &weaponB);
+	void attack();
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:48:05 by tmurua            #+#    #+#             */
-/*   Updated: 2025/03/04 17:00:37 by tmurua           ###   ########.fr       */
+/*   Updated: 2025/03/05 13:15:59 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main()
 		HumanB jim("Jim");
 		jim.setWeapon(club);
 		jim.attack();
+		// jim.setWeapon(club);
 		club.setType("some other type of club");
 		jim.attack();
 	}

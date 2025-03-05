@@ -88,10 +88,31 @@ This exercise adds **arrays allocation** to the last one. Taking ex00 as a basis
 ## ex:03 - Unnecessary violence
 
 ### Plan
-1. **Step1**
+1. **Weapon Class**:
+   - Create a `Weapon` class in `Weapon.hpp` with a private string attribute type.
+   - Implement `getType()` to return a constant reference to type.
+   - Implement `setType()` to update type.
+
+2. **HumanA Class**:
+   - Create `HumanA` in `HumanA.hpp` with a `name` and a `Weapon`.
+   - The constructor takes a `name` and a **`reference to a Weapon`** (HumanA is always armed).
+   - Implement `attack()` to print:
+  ```
+  <name> attacks with their <weapon type>
+  ```
+
+1. **HumanB Class**:
+   - Create `HumanB` in `HumanB.hpp` with a name and a **`Weapon pointer`**.
+   - The constructor takes only a `name`; a `Weapon` can be set later with `setWeapon()`.
+   - Implement `attack()` to print the attack message only if a weapon is set; otherwise, handle the unarmed case.
+
+2. **Main Function**:
+   - Test the functionality for both `HumanA` and `HumanB`.
+   - Change the Weapon's type between attacks to verify that the updated weapon type is used.
 
 ### Lessons Learned
-- **Lesson**
+- **Pointers vs. References**:
+  `HumanA` must always have a weapon, so a reference (passed as an argument and stored as a pointer) works well. `HumanB` may not always have a weapon, so storing a `Weapon pointer` that can be `null` is appropriate.
 
 ---
 ## ex:04 - Sed is for losers
