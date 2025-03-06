@@ -6,57 +6,23 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 15:00:45 by tmurua            #+#    #+#             */
-/*   Updated: 2025/03/06 11:32:51 by tmurua           ###   ########.fr       */
+/*   Updated: 2025/03/06 17:36:15 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <fstream> // for std::ifstream class (file input operations)
-#include <sstream> // for std::stringstream (to capture file content as string)
-
-int			check_args(int argc, char **argv);
-std::string	read_infile_content(std::string &infilename);
-void		write_outfile(std::string &infilename, std::string &content);
+#include "alt_sed.hpp"
 
 int main(int argc, char **argv)
 {
 	if (check_args(argc, argv) == 1)
 		return 1;
 	std::string infilename = argv[1];
-	std::string content = read_infile_content(infilename);
-
-	std::cout << "The file " << infilename << " contains: " << content;
-
-	write_outfile(infilename, content);
-}
-
-int			check_args(int argc, char **argv)
-{
-	if (argc != 4)
-	{
-		std::cerr << "Usage: " << argv[0] << " <filename> <s1> <s2>\n";
-		return 1;
-	}
-	return 0;
-}
-
-// read entire content of the file into a string
-std::string	read_infile_content(std::string &infilename)
-{
-	std::ifstream infile(infilename.c_str()); // open input file. c_str(): std::string to C-string
-	if (!infile)
-		std::cerr << "Error opening file " << infilename <<"\n";
-	std::stringstream buffer; // create stringstream to capture file's content
-	buffer << infile.rdbuf(); // rdbuf(): read file's internal buffer. <<: pass it to stringstream
-	std::string infile_content = buffer.str(); // stringstream's content into std::string
-	return (infile_content);
-}
-
-void		write_outfile(std::string &infilename, std::string &content)
-{
-	std::string outfilename = infilename + ".replace";
-	std::ofstream outfile(outfilename.c_str());
-	if (!outfile)
-		std::cerr << "Error: Cannot create file " << outfilename << "\n";
-	outfile << content;
+	int	is_file_valid = 0;
+	std::string og_content = read_infile_og_content(infilename, is_file_valid);
+	if (is_file_valid == 1)
+		return is_file_valid;
+	std::string s1 = argv[2];
+	std::string s2 = argv[3];
+	std::string new_content = replace_string(og_content, s1, s2);
+	write_outfile(infilename, new_content);
 }

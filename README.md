@@ -118,10 +118,39 @@ This exercise adds **arrays allocation** to the last one. Taking ex00 as a basis
 ## ex:04 - Sed is for losers
 
 ### Plan
-1. **Step1**
+1. **Argument Validation:**
+   - Ensure the program receives exactly three parameters: a filename, string `s1`, and string `s2`, i.e. `argc = 4;`
+   - If not, display a usage message and exit.
+
+2. **Reading the Input File:**
+   - Open the input file using an `std::ifstream`.
+   - Read its entire og_content into a single `std::string` using an `std::stringstream`.
+
+3. **String Replacement (without std::string::replace):**
+   - Using the og_content read from the file, search for every occurrence of `s1` using `std::string::find`.
+   - Build a new string:
+     - Append portions of the og_content before each occurrence of `s1`.
+     - Append `s2` in place of `s1`.
+     - Continue until the entire og_content is processed.
+
+4. **Writing to the Output File:**
+   - Create an output filename by appending `.replace` to the original filename.
+   - Open an `std::ofstream` with the new filename.
+   - Write the modified new_og_content (with `s1` replaced by `s2`) to this file.
+
+5. **Error Handling:**
+   - Check that both input and output files open successfully.
+   - Handle unexpected errors gracefully by printing error messages.
 
 ### Lessons Learned
-- **Lesson**
+- **File I/O in C++:**
+  Using `std::ifstream` and `std::ofstream` for reading from and writing to files, respectively, instead of C-style file functions.
+- **String Manipulation Without replace():**
+  By using `std::string::find` and `std::string::substr`, we can manually reconstruct a string with substitutions—reinforcing an understanding of how string searching and slicing work.
+- **Dynamic Memory & Resource Management:**
+  Reading a file into an `std::stringstream` and writing to a file demonstrate the importance of resource management and error checking in file I/O.
+- **Error Handling:**
+  Validating command-line arguments and checking file stream statuses ensures the program behaves correctly even when unexpected inputs or errors occur.
 
 ---
 ## ex:05 - Harl 2.0
