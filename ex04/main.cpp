@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 15:00:45 by tmurua            #+#    #+#             */
-/*   Updated: 2025/03/06 09:47:28 by tmurua           ###   ########.fr       */
+/*   Updated: 2025/03/06 11:32:51 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,23 @@
 #include <fstream> // for std::ifstream class (file input operations)
 #include <sstream> // for std::stringstream (to capture file content as string)
 
-int check_args(int argc, char **argv);
-std::string read_file_content(std::string &filename);
+int			check_args(int argc, char **argv);
+std::string	read_infile_content(std::string &infilename);
+void		write_outfile(std::string &infilename, std::string &content);
 
 int main(int argc, char **argv)
 {
-	std::string filename = argv[1];
-
 	if (check_args(argc, argv) == 1)
 		return 1;
-	std::string file_content = read_file_content(filename);
+	std::string infilename = argv[1];
+	std::string content = read_infile_content(infilename);
 
-	std::cout << "The file " << filename << " contains: " << file_content;
+	std::cout << "The file " << infilename << " contains: " << content;
+
+	write_outfile(infilename, content);
 }
 
-int check_args(int argc, char **argv)
+int			check_args(int argc, char **argv)
 {
 	if (argc != 4)
 	{
@@ -38,13 +40,23 @@ int check_args(int argc, char **argv)
 	return 0;
 }
 
-std::string read_file_content(std::string &filename)
+// read entire content of the file into a string
+std::string	read_infile_content(std::string &infilename)
 {
-	std::ifstream file(filename.c_str()); // open input file in argv[1]
-	if (!file)
-		std::cerr << "Error opening file " << filename <<"\n";
-	std::stringstream buffer; // stringstream will store entire file content as string
-	buffer << file.rdbuf(); // rdbuf(): read file's internal buffer. <<: pass it to stringstream
-	std::string file_content = buffer.str(); // stringstream's content into string
-	return (file_content);
+	std::ifstream infile(infilename.c_str()); // open input file. c_str(): std::string to C-string
+	if (!infile)
+		std::cerr << "Error opening file " << infilename <<"\n";
+	std::stringstream buffer; // create stringstream to capture file's content
+	buffer << infile.rdbuf(); // rdbuf(): read file's internal buffer. <<: pass it to stringstream
+	std::string infile_content = buffer.str(); // stringstream's content into std::string
+	return (infile_content);
+}
+
+void		write_outfile(std::string &infilename, std::string &content)
+{
+	std::string outfilename = infilename + ".replace";
+	std::ofstream outfile(outfilename.c_str());
+	if (!outfile)
+		std::cerr << "Error: Cannot create file " << outfilename << "\n";
+	outfile << content;
 }
