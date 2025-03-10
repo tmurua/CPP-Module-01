@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 16:41:14 by tmurua            #+#    #+#             */
-/*   Updated: 2025/03/06 17:34:44 by tmurua           ###   ########.fr       */
+/*   Updated: 2025/03/10 13:48:17 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int			check_args(int argc, char **argv)
 }
 
 // read entire og_content from infile and convert it into a string
-std::string	read_infile_og_content(std::string &infilename, int &is_file_valid)
+std::string	read_infile(std::string &infilename, int &is_file_valid)
 {
 	std::ifstream infile(infilename.c_str()); // c_str(): std::string to C-string
 	if (!infile)
@@ -35,15 +35,6 @@ std::string	read_infile_og_content(std::string &infilename, int &is_file_valid)
 	buffer << infile.rdbuf(); // rdbuf(): read file's internal buffer
 	std::string og_content = buffer.str();
 	return (og_content);
-}
-
-void		write_outfile(std::string &infilename, std::string &new_content)
-{
-	std::string outfilename = infilename + ".replace";
-	std::ofstream outfile(outfilename.c_str()); // open outfile stream for writing
-	if (!outfile)
-		std::cerr << "Error: Cannot create file " << outfilename << "\n";
-	outfile << new_content;
 }
 
 std::string	replace_string(std::string og_content, std::string s1, std::string s2)
@@ -63,4 +54,13 @@ std::string	replace_string(std::string og_content, std::string s1, std::string s
 	}
 	new_content += og_content.substr(pos); // append remaining text from og_content
 	return (new_content);
+}
+
+void		write_outfile(std::string &infilename, std::string &new_content)
+{
+	std::string outfilename = infilename + ".replace";
+	std::ofstream outfile(outfilename.c_str()); // open outfile stream for writing
+	if (!outfile)
+		std::cerr << "Error: Cannot create file " << outfilename << "\n";
+	outfile << new_content;
 }

@@ -118,39 +118,39 @@ This exercise adds **arrays allocation** to the last one. Taking ex00 as a basis
 ## ex:04 - Sed is for losers
 
 ### Plan
-1. **Argument Validation:**
-   - Ensure the program receives exactly three parameters: a filename, string `s1`, and string `s2`, i.e. `argc = 4;`
-   - If not, display a usage message and exit.
+1. **Check arguments:**
+   - Program should receive 3 parameters: filename, string `s1`, and string `s2`, i.e. `argc = 4;`
+   - If not, display an usage message and exit.
 
-2. **Reading the Input File:**
-   - Open the input file using an `std::ifstream`.
-   - Read its entire og_content into a single `std::string` using an `std::stringstream`.
+2. **Read input file:**
+   - Open input file using `std::ifstream` (input file stream).
+   - Read file's `og_content` into a single `std::string` using `std::stringstream`.
+   - Use the member function `rdbuf()` of `std::ifstream` to read the file's internal buffer.
+   - Convert the stream buffer to a string using the `str()` member function of `std::stringstream`.
 
-3. **String Replacement (without std::string::replace):**
-   - Using the og_content read from the file, search for every occurrence of `s1` using `std::string::find`.
+3. **Replace `s1` with `s2` (without std::string::replace):**
+   - Using the `og_content` read from the input file, find every occurrence of `s1` using `std::string::find`.
    - Build a new string:
-     - Append portions of the og_content before each occurrence of `s1`.
+     - Append portions of the `og_content` before each occurrence of `s1`.
      - Append `s2` in place of `s1`.
-     - Continue until the entire og_content is processed.
+     - Continue until the entire `og_content` is processed.
 
-4. **Writing to the Output File:**
+4. **Writing to the output file:**
    - Create an output filename by appending `.replace` to the original filename.
-   - Open an `std::ofstream` with the new filename.
-   - Write the modified new_og_content (with `s1` replaced by `s2`) to this file.
+   - Open a `std::ofstream` with the new filename.
+   - Write the modified `new_content` (with `s1` replaced by `s2`) to this file.
 
-5. **Error Handling:**
-   - Check that both input and output files open successfully.
+5. **Error handling:**
+   - Check that both input and output files open successfully. Can use a flag for this.
    - Handle unexpected errors gracefully by printing error messages.
 
 ### Lessons Learned
 - **File I/O in C++:**
-  Using `std::ifstream` and `std::ofstream` for reading from and writing to files, respectively, instead of C-style file functions.
-- **String Manipulation Without replace():**
-  By using `std::string::find` and `std::string::substr`, we can manually reconstruct a string with substitutions—reinforcing an understanding of how string searching and slicing work.
-- **Dynamic Memory & Resource Management:**
-  Reading a file into an `std::stringstream` and writing to a file demonstrate the importance of resource management and error checking in file I/O.
-- **Error Handling:**
-  Validating command-line arguments and checking file stream statuses ensures the program behaves correctly even when unexpected inputs or errors occur.
+  Using the classes `std::ifstream` and `std::ofstream` and their member function `rdbuf()` for reading from and writing to files, respectively, instead of C-style file functions.
+- **String manipulation:**
+  Using the classes `std::string::find` and `std::string::substr`, to manually reconstruct a string with substitutions, reinforces an understanding of how string searching and slicing work.
+- **Dynamic memory:**
+  Reading a file's content into a `std::stringstream` using its member function `str()` in conjuction with `std::ifstream` to later write it to a new file exemplifies the use of dynamic memory allocation in C++.
 
 ---
 ## ex:05 - Harl 2.0
