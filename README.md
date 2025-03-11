@@ -128,19 +128,23 @@ This exercise adds **arrays allocation** to the last one. Taking ex00 as a basis
    - Use the member function `rdbuf()` of `std::ifstream` to read the file's internal buffer.
    - Convert the stream buffer to a string using the `str()` member function of `std::stringstream`.
 
-3. **Replace `s1` with `s2` (without std::string::replace):**
-   - Using the `og_content` read from the input file, find every occurrence of `s1` using `std::string::find`.
-   - Build a new string:
-     - Append portions of the `og_content` before each occurrence of `s1`.
-     - Append `s2` in place of `s1`.
-     - Continue until the entire `og_content` is processed.
+3. **Replace `s1` with `s2` (without using std::string::replace):**
+  - Start with the full content of the input file stored in `og_content`.
+  - Initialize a position marker `og_pos` at 0 (the start of the string).
+  - Use `std::string::find(s1, og_pos)` to search for the first occurrence of `s1` in `og_content` starting at `og_pos`, mark the index of the occurence as `s1_found_index`.
+  - While `s1` is found:
+    - Extract the substring from `og_content` that lies between the current position (`og_pos`) and the `s1_found_index` and append this prefix segment, this `content_part` to a new string `new_content`.
+    - Append `s2` (the replacement string) to `new_content` in place of the found occurrence of `s1`.
+    - Update `og_pos` to `s1_found_index + s1.length()` so the next search starts after the replaced segment.
+  - Once no further occurrence of `s1` is found (i.e., `find()` returns `std::string::npos`), append the remaining text (from `og_pos` to the end of `og_content`) to `new_content`.
 
-4. **Writing to the output file:**
+
+1. **Writing to the output file:**
    - Create an output filename by appending `.replace` to the original filename.
    - Open a `std::ofstream` with the new filename.
    - Write the modified `new_content` (with `s1` replaced by `s2`) to this file.
 
-5. **Error handling:**
+2. **Error handling:**
    - Check that both input and output files open successfully. Can use a flag for this.
    - Handle unexpected errors gracefully by printing error messages.
 
