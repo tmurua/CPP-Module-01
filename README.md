@@ -159,7 +159,13 @@ This exercise adds **arrays allocation** to the last one. Taking ex00 as a basis
 ## ex:05 - Harl 2.0
 
 ### Plan
-1. **Step1**
+1. **Create a `Harl` class** with:
+   - `debug()`, `info()`, `warning()`, and `error()` private member functions. All returning `void` with `void` parameter.
+   - `complain()` public member function with a `std::string level` parameter that should access one of the 4 private functions to output their message based on the `level` parameter given.
+
+2. **Use pointers** to the private member functions in `complain()`. For that we use two different arrays, an array of strings to match the user's input, and an array of pointers to member functions, with each element being one of the four private member functions of the class `Harl`.
+
+3. **Loop through the levels**, if one of the levels matches the input, call the corresponding function.
 
 ### Lessons Learned
 - **Lesson**
