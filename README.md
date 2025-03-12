@@ -138,13 +138,12 @@ This exercise adds **arrays allocation** to the last one. Taking ex00 as a basis
     - Update `og_pos` to `s1_found_index + s1.length()` so the next search starts after the replaced segment.
   - Once no further occurrence of `s1` is found (i.e., `find()` returns `std::string::npos`), append the remaining text (from `og_pos` to the end of `og_content`) to `new_content`.
 
-
-1. **Writing to the output file:**
+4. **Writing to the output file:**
    - Create an output filename by appending `.replace` to the original filename.
    - Open a `std::ofstream` with the new filename.
    - Write the modified `new_content` (with `s1` replaced by `s2`) to this file.
 
-2. **Error handling:**
+5. **Error handling:**
    - Check that both input and output files open successfully. Can use a flag for this.
    - Handle unexpected errors gracefully by printing error messages.
 
