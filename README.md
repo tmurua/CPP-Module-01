@@ -76,13 +76,28 @@ This exercise adds **arrays allocation** to the last one. Taking ex00 as a basis
 
 ---
 
-## ex:02 -  HI THIS IS BRAIN
+## ex:02 - HI THIS IS BRAIN
 
 ### Plan
-1. **Step1**
+1. **Create a string variable** initialized to `"HI THIS IS BRAIN"`.
+2. **Create a pointer (stringPTR)** that holds the address of the string variable.
+3. **Create a reference (stringREF)** to the string variable.
+4. **Print Memory Addresses:**
+   - Print the address of the string variable.
+   - Print the address stored in stringPTR.
+   - Print the address referred to by stringREF.
+5. **Print Values:**
+   - Print the value of the string variable.
+   - Print the value obtained by dereferencing stringPTR.
+   - Print the value via stringREF.
 
 ### Lessons Learned
-- **Lesson**
+- **Pointers and References:**
+  Pointers store the memory address of a variable, whereas references provide an alias to that variable. This exercise shows that the addresses of the original string, the pointer’s value, and the reference’s address are identical.
+- **Address Manipulation:**
+  Demonstrated that by dereferencing a pointer and using a reference, you access the same value as the original variable.
+- **Basic Memory Concepts:**
+  Reinforced understanding of how variables, pointers, and references interact in C++.
 
 ---
 ## ex:03 - Unnecessary violence

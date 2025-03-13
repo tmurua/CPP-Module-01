@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 22:18:59 by tmurua            #+#    #+#             */
-/*   Updated: 2025/02/27 17:36:07 by tmurua           ###   ########.fr       */
+/*   Updated: 2025/03/13 11:00:15 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,8 @@ private:
 	std::string name;
 
 public:
-	Zombie(std::string name) // constructor initializes Zombie with a name
-	{
-		this->name = name;
-	}
-	void	announce()
-	{
-		std::cout << name << ": BraiiiiiiinnnzzzZ...\n";
-	}
+	Zombie(std::string name);
+	void	announce();
 	~Zombie();
 };
 

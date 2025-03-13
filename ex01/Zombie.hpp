@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:44:31 by tmurua            #+#    #+#             */
-/*   Updated: 2025/02/28 17:10:11 by tmurua           ###   ########.fr       */
+/*   Updated: 2025/03/13 11:06:36 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,9 @@ private:
 	std::string name;
 
 public:
-	Zombie() // default constructor (empty) used for array allocation with new
-	{
-	}
-	void	give_name(std::string name) // set name outside constructor
-	{
-		this->name = name;
-	}
-	void	announce()
-	{
-		std::cout << name << ": BraiiiiiiinnnzzzZ...\n";
-	}
+	Zombie();
+	void	give_name(std::string name);
+	void	announce();
 	~Zombie();
 };
 
